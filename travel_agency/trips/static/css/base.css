@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.navbar {
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.nav-link {
+    margin-right: 15px;
+    color: blue;
+    text-decoration: none;
+}
+.nav-link:hover {
+    text-decoration: underline;
+}
+.nav-user {
+    margin-right: 15px;
+    color: #333;
+}
+.content {
+    margin: 20px;
+}
+.footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #ccc;
+    text-align: center;
+}
+.footer p {
+    margin: 5px 0;
+}
+
+/* În trips/static/css/base.css */
+form {
+    margin-top: 15px;
+}
+form p {
+    margin-bottom: 10px;
+}
+form input {
+    padding: 5px;
+    width: 200px;
+    border: 1px solid #ccc;
+}
+form button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+form button:hover {
+    background-color: #0056b3;
+}
+.success {
+    color: green;
+}
+.error {
+    color: red;
+}

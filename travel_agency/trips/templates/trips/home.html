@@ -1,0 +1,55 @@
+<!-- trips/home.html -->
+{% extends 'trips/master.html' %}
+{% load static %}
+
+{% block title %}Home - Travel Agency{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>Welcome to Our Travel Agency</h1>
+
+    <div class="trip-section">
+        <h2>Promoted Trips</h2>
+        {% for trip in promoted_trips %}
+        <div class="trip-item">
+            <h3>
+                <a href="{% url 'search_trips' %}?destination_city={{ trip.destination_city.id }}">{{ trip.destination_hotel.city.name }}</a>
+            </h3>
+            <p>
+                Hotel: <a href="{% url 'search_trips' %}?hotel={{ trip.destination_hotel.id }}">{{ trip.destination_hotel.name }}</a> ({{ trip.destination_hotel.standard }} stars)<br>
+                From: <a href="{% url 'search_trips' %}?departure_city={{ trip.departure_city.id }}">{{ trip.departure_city.name }}</a><br>
+                Date: {{ trip.departure_date|date:"d M Y" }}<br>
+                Price: €{{ trip.price_adult }} (adult)
+            </p>
+            <a href="{% url 'trip_detail' trip.id %}">View Details</a>
+        </div>
+        {% empty %}
+        <p>No promoted trips available.</p>
+        {% endfor %}
+    </div>
+
+    <div class="trip-section">
+        <h2>Upcoming Trips</h2>
+        {% for trip in upcoming_trips %}
+        <div class="trip-item">
+            <h3>{{ trip.destination_hotel.city.name }}</h3>
+            <p>Date: {{ trip.departure_date|date:"d M Y" }}</p>
+            <a href="{% url 'search_trips' %}?destination_city={{ trip.destination_city.id }}">See more</a>
+        </div>
+        {% empty %}
+        <p>No upcoming trips available.</p>
+        {% endfor %}
+    </div>
+
+    <div class="country-section">
+        <h2>Explore by Country</h2>
+        {% for country in popular_countries %}
+        <a href="{% url 'search_trips' %}?country={{ country.id }}" class="country-link">{{ country.name }}</a>
+        {% empty %}
+        <p>No countries available.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

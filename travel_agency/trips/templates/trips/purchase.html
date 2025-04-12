@@ -1,0 +1,40 @@
+{% extends 'trips/master.html' %}
+{% load static %}
+
+{% block title %}Purchase Trip{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/purchase.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>Purchase Trip to {{ trip.destination_city.name }}</h1>
+    <p>
+        <strong>Hotel:</strong> <a href="{% url 'search_trips' %}?hotel={{ trip.destination_hotel.id }}">{{ trip.destination_hotel.name }}</a> ({{ trip.destination_hotel.standard }} stars)<br>
+        <strong>Country:</strong> <a href="{% url 'search_trips' %}?country={{ trip.destination_hotel.city.country.id }}">{{ trip.destination_hotel.city.country.name }}</a><br>
+        <strong>From:</strong> <a href="{% url 'search_trips' %}?departure_city={{ trip.departure_city.id }}">{{ trip.departure_city.name }}</a><br>
+        <strong>Departure:</strong> {{ trip.departure_date|date:"Y-m-d" }}<br>
+        <strong>Type:</strong> {{ trip.get_trip_type_display }}<br>
+        <strong>Price:</strong> €{{ trip.price_adult }} / adult, €{{ trip.price_child }} / child<br>
+        <strong>Available:</strong> {{ trip.places_adults }} adults, {{ trip.places_children }} children
+        {% if trip.places_adults <= 2 or trip.places_children <= 2 %}
+        <span class="limited-places"> - Hurry! Limited places left!</span>
+        {% endif %}
+    </p>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="post" onsubmit="return validateForm()">
+        {% csrf_token %}
+        <label>Adults: <input type="number" name="adults" min="0" value="0"></label><br>
+        <label>Children: <input type="number" name="children" min="0" value="0"></label><br>
+        <button type="submit">Purchase</button>
+    </form>
+    <p><a href="{% url 'trip_detail' trip.id %}">Back to Trip Details</a></p>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/purchase.js' %}"></script>
+{% endblock %}

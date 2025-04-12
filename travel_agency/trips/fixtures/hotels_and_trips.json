@@ -1,0 +1,23 @@
+[
+    {"model": "trips.hotel", "pk": 1, "fields": {"name": "Lagos Continental Hotel", "standard": 4, "description": "Luxury hotel in Lagos", "city": 1}},
+    {"model": "trips.hotel", "pk": 2, "fields": {"name": "Tokyo Prince Hotel", "standard": 5, "description": "Premium hotel near Tokyo Tower", "city": 2}},
+    {"model": "trips.hotel", "pk": 3, "fields": {"name": "Sydney Harbour Marriott", "standard": 5, "description": "Scenic views of Sydney", "city": 3}},
+    {"model": "trips.hotel", "pk": 4, "fields": {"name": "JW Marriott Bucharest", "standard": 5, "description": "Elegant hotel in Bucharest", "city": 4}},
+    {"model": "trips.hotel", "pk": 5, "fields": {"name": "New York Hilton Midtown", "standard": 4, "description": "Central location in NYC", "city": 5}},
+    {"model": "trips.hotel", "pk": 6, "fields": {"name": "Copacabana Palace", "standard": 5, "description": "Iconic hotel in Rio", "city": 6}},
+    {"model": "trips.trip", "pk": 1, "fields": {
+        "departure_city": 4, "departure_airport": 4, "destination_city": 2, "destination_hotel": 2, "destination_airport": 2,
+        "departure_date": "2025-06-01", "return_date": "2025-06-08", "length_of_stay": 7, "trip_type": "AI",
+        "price_adult": "1200.00", "price_child": "600.00", "promoted": true, "places_adults": 10, "places_children": 5
+    }},
+    {"model": "trips.trip", "pk": 2, "fields": {
+        "departure_city": 5, "departure_airport": 5, "destination_city": 6, "destination_hotel": 6, "destination_airport": 6,
+        "departure_date": "2025-07-15", "return_date": "2025-07-22", "length_of_stay": 7, "trip_type": "HB",
+        "price_adult": "1500.00", "price_child": "750.00", "promoted": false, "places_adults": 15, "places_children": 10
+    }},
+    {"model": "trips.trip", "pk": 3, "fields": {
+        "departure_city": 1, "departure_airport": 1, "destination_city": 3, "destination_hotel": 3, "destination_airport": 3,
+        "departure_date": "2025-08-10", "return_date": "2025-08-17", "length_of_stay": 7, "trip_type": "FB",
+        "price_adult": "1000.00", "price_child": "500.00", "promoted": true, "places_adults": 8, "places_children": 4
+    }}
+]

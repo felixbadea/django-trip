@@ -1,0 +1,44 @@
+{% extends 'trips/master.html' %}
+{% load static %}
+
+{% block title %}{{ trip.destination_city.name }} Trip{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/trip_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>Trip to {{ trip.destination_city.name }}</h1>
+    <p>
+        <strong>Hotel:</strong> {{ trip.destination_hotel.name }} ({{ trip.destination_hotel.standard }} stars)<br>
+        <strong>Country:</strong> {{ trip.destination_hotel.city.country.name }}<br>
+        <strong>From:</strong> {{ trip.departure_city.name }} ({{ trip.departure_airport.name }})<br>
+        <strong>To:</strong> {{ trip.destination_airport.name }}<br>
+        <strong>Departure:</strong> {{ trip.departure_date|date:"Y-m-d" }}<br>
+        <strong>Return:</strong> {{ trip.return_date|date:"Y-m-d" }}<br>
+        <strong>Length:</strong> {{ trip.length_of_stay }} days<br>
+        <strong>Type:</strong> {{ trip.get_trip_type_display }}<br>
+        <strong>Price:</strong> €{{ trip.price_adult }} / adult, €{{ trip.price_child }} / child<br>
+        <strong>Available:</strong> {{ trip.places_adults }} adults, {{ trip.places_children }} children
+        {% if trip.places_adults == 0 and trip.places_children == 0 %}
+            <span class="unavailable"> - Sold Out!</span>
+        {% elif trip.places_adults <= 2 or trip.places_children <= 2 %}
+            <span class="limited-places"> - Hurry! Limited places!</span>
+        {% endif %}
+    </p>
+    {% if trip.places_adults > 0 or trip.places_children > 0 %}
+        <a href="{% url 'purchase_trip' trip.id %}" class="book-button">Book This Trip</a>
+    {% else %}
+        <button class="book-button disabled" disabled>Sold Out</button>
+    {% endif %}
+    
+    {% if similar_trips %}
+        <h2>Similar Trips</h2>
+        {% for similar in similar_trips %}
+            <p>
+                <a href="{% url 'trip_detail' similar.id %}">{{ similar.destination_city.name }}</a> - 
+                €{{ similar.price_adult }} / adult
+            </p>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

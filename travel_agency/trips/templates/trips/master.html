@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Felix Travel Agency{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="nav-link">Home</a>
+        <a href="{% url 'search_trips' %}" class="nav-link">Search</a>
+        <a href="{% url 'about' %}" class="nav-link">About</a>
+        {% if user.is_authenticated %}
+            <span class="nav-user">Welcome, {{ user.username }}</span>
+            <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="nav-link">Login</a>
+            <a href="{% url 'register' %}" class="nav-link">Register</a>
+        {% endif %}
+    </nav>
+
+    <main class="content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Felix Travel Agency. All rights reserved.</p>
+        <p>Contact: felix_badea@yahoo.com | +40 722 571 009</p>
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
