@@ -13,6 +13,7 @@ from django.contrib import messages
 # Create your views here.
 
 def home(request):
+    print(f"Request URL: {request.path}")  # Debug
     promoted_trips = Trip.objects.filter(promoted=True).select_related(
         'destination_hotel__city__country__continent',
         'departure_city__country__continent',
@@ -125,15 +126,23 @@ def login_view(request):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
+            user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
                 messages.success(request, f'Welcome back, {username}!')
-                return redirect('home')
-        messages.error(request, 'Invalid username or password.')
+                # Suport pentru 'next'
+                next_url = request.POST.get('next', request.GET.get('next', 'home'))
+                return redirect(next_url)
+            else:
+                messages.error(request, 'Invalid username or password.')
+        else:
+            messages.error(request, 'Please correct the errors below.')
     else:
         form = AuthenticationForm()
-    return render(request, 'trips/registration/login.html', {'form': form})
+    return render(request, 'trips/registration/login.html', {
+        'form': form,
+        'next': request.GET.get('next', '')
+    })
 
 def logout_view(request):
     logout(request)
