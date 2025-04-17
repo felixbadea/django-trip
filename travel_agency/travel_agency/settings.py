@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-bu_cg+*!2v_rk3-eb#p=vt8&am9m7%_gecetm*s=qn(1(aq3^%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -125,11 +125,11 @@ USE_TZ = True
 STATIC_URL = 'static/'
 # Opțional: pentru fișiere statice în afara aplicațiilor
 STATICFILES_DIRS = [
-    BASE_DIR / "trips" / "static",
+    BASE_DIR / 'trips' / 'static',
 ]
 
 # Pentru producție (unde se adună fișierele cu collectstatic)
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

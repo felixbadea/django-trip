@@ -6,26 +6,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Felix Travel Agency{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    {% block extra_css %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'css\base.css' %}">
+{% block extra_css %}{% endblock %}
 </head>
+
 <body>
     <nav class="navbar">
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'search_trips' %}">Search</a>
-        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a>
+        <a href="{% url 'search_trips' %}" class="{% if request.path == '/search/' %}active{% endif %}">Search</a>
+        <a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">About</a>
+        <span id="clock"></span>
         {% if user.is_authenticated %}
             <span>Welcome, {{ user.username }}!</span>
-            <a href="{% url 'logout' %}">Logout</a>
+            <a href="{% url 'logout' %}" class="{% if request.path == '/logout/' %}active{% endif %}">Logout</a>
         {% else %}
-            <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}" class="{% if request.path == '/login/' %}active{% endif %}">Login</a>
+            <a href="{% url 'register' %}" class="{% if request.path == '/register/' %}active{% endif %}">Register</a>
         {% endif %}
     </nav>
     <main>
         {% block content %}
         {% endblock %}
     </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Felix Travel Agency. Toate drepturile rezervate.</p>
+        <p>Contact: contact@travelagency.com</p>
+    </footer>
+    <script>
+        // Adaugă clasa active la click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                // Elimină clasa active de la toate link-urile
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                // Adaugă clasa active la link-ul apăsat
+                this.classList.add('active');
+            });
+        });
+    </script>
+    <!-- Script pentru ceas -->
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        // Actualizează ceasul la fiecare secundă
+        setInterval(updateClock, 1000);
+        updateClock(); // Inițializează ceasul imediat
+    </script>
 </body>
 </html>
 
