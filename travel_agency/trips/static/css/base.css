@@ -1,6 +1,11 @@
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
+    background-image: url('travel_agency\staticfiles\images\plaja1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
 }
 /* Navbar fix */
 .navbar {
@@ -41,7 +46,7 @@ body {
 }
 .navbar a.active {
     background-color: #5b15de; /* Culoare de fundal pentru butonul activ */
-    color: white; /* Culoare text pentru butonul activ */
+    color: rgb(233, 38, 17); /* Culoare text pentru butonul activ */
     font-weight: bold;
 }
 .content {
@@ -59,15 +64,18 @@ main {
     color: #333;
     font-family: monospace; /* Pentru un aspect de ceas digital */
     font-size: 16px;
+    font-weight: bold;
     background-color: #e7ee18;
     border-radius: 8px;
 }
 .footer {
+    position: fixed !important;
     margin-top: 20px;
     padding: 10px;
     background-color: #0b66ac;
     border-top: 1px solid #100404;
     text-align: center;
+    margin-bottom: 0;
 }
 .footer p {
     margin: 5px 0;

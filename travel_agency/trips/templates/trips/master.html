@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Felix Travel Agency{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css\base.css' %}">
+    <style>
+        body {
+          background-image: url('css\images\plaja1.jpg');
+        }
+        </style>
 {% block extra_css %}{% endblock %}
 </head>
 
@@ -15,7 +20,7 @@
         <a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a>
         <a href="{% url 'search_trips' %}" class="{% if request.path == '/search/' %}active{% endif %}">Search</a>
         <a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">About</a>
-        <span id="clock"></span>
+            <span id="clock"></span>
         {% if user.is_authenticated %}
             <span>Welcome, {{ user.username }}!</span>
             <a href="{% url 'logout' %}" class="{% if request.path == '/logout/' %}active{% endif %}">Logout</a>
@@ -46,8 +51,19 @@
             });
         });
     </script>
-    <!-- Script pentru ceas -->
-        <script src="js/ceas.js"></script>
+    <script>
+        function updateClock() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+// Actualizează ceasul la fiecare secundă
+setInterval(updateClock, 1000);
+updateClock(); // Inițializează ceasul imediat
+    </script>
 </body>
 </html>
 
