@@ -127,7 +127,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'trips' / 'static',
 ]
-
 # Pentru producție (unde se adună fișierele cu collectstatic)
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
