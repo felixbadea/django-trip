@@ -7,11 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Felix Travel Agency{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css\base.css' %}">
-    <style>
-        body {
-          background-image: url('css\images\plaja1.jpg');
-        }
-        </style>
 {% block extra_css %}{% endblock %}
 </head>
 
@@ -40,7 +35,7 @@
         <p>© 2025 Felix Travel Agency. Toate drepturile rezervate.</p>
         <p>Contact: contact@travelagency.com</p>
     </footer>
-    <script>
+<script>
         // Adaugă clasa active la click
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function() {
@@ -50,8 +45,8 @@
                 this.classList.add('active');
             });
         });
-    </script>
-    <script>
+</script>
+<script>
         function updateClock() {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, '0');
@@ -63,7 +58,7 @@
 // Actualizează ceasul la fiecare secundă
 setInterval(updateClock, 1000);
 updateClock(); // Inițializează ceasul imediat
-    </script>
+</script>
 </body>
 </html>
 
