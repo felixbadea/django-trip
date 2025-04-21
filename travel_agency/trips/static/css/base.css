@@ -46,7 +46,7 @@ body {
 }
 .navbar a.active {
     background-color: #5b15de; /* Culoare de fundal pentru butonul activ */
-    color: rgb(233, 38, 17); /* Culoare text pentru butonul activ */
+    color: rgb(75, 233, 17); /* Culoare text pentru butonul activ */
     font-weight: bold;
 }
 .content {
