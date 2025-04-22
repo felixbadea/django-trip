@@ -47,7 +47,7 @@
     <div class="country-section">
         <h2>Explore by Country</h2>
         {% for country in popular_countries %}
-        <a href="{% url 'search_trips' %}?country={{ country.id }}" class="country-link">{{ country.name }}</a>
+        <a href="{% url 'search_trips' %}?country={{ country.id }}" class="country-link" aria-label="Search trips to {{ country.name }}">{{ country.name }}</a>
         {% empty %}
         <p>No countries available.</p>
         {% endfor %}

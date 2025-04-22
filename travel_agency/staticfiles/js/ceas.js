@@ -5,7 +5,6 @@ function updateClock() {
     const seconds = String(now.getSeconds()).padStart(2, '0');
     document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
 }
-
 // Actualizează ceasul la fiecare secundă
 setInterval(updateClock, 1000);
 updateClock(); // Inițializează ceasul imediat
