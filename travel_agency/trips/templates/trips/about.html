@@ -2,9 +2,12 @@
 {% load static %}
 
 {% block title %}About Us{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
 
 {% block content %}
-    <h1>About <i>Felix Travel Agency</i></h1>
+    <h1><i>About Felix Travel Agency</i></h1>
     <p>Welcome to our travel agency, where we make your dream vacations come true!</p>
     <p>
         Founded in 2025, we specialize in offering personalized travel experiences to destinations worldwide. 

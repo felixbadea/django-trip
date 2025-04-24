@@ -3,6 +3,9 @@
 {% load static %}
 
 {% block title %}Search Trips{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock %}
 
 {% block content %}
     <h1>Search Trips</h1>

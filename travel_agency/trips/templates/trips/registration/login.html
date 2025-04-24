@@ -1,8 +1,10 @@
 {% extends 'trips/master.html' %}
 {% block title %}Login{% endblock %}
 
+
+
 {% block content %}
-    <h1>Login</h1>
+    <h1 ><i>Login here:</i></h1>
     {% if messages %}
         {% for message in messages %}
             <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>

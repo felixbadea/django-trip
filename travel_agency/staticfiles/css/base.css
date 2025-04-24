@@ -22,12 +22,13 @@ body {
 
 /* Stiluri link-uri navbar */
 .navbar a {
-    color: white;
+    color: rgb(232, 207, 16);
     text-decoration: none;
     margin: 0 15px;
     font-size: 16px;
     border-radius: 3px;
     box-shadow: #007bff;
+    text-shadow: 1px 1px 2px black, 0 0 25px hsl(5, 100%, 50%), 0 0 5px darkblue;
 }
 .navbar a:hover {
     text-decoration: none;
@@ -45,12 +46,12 @@ body {
     color: #333;
 }
 .navbar a.active {
-    background-color: #5b15de; /* Culoare de fundal pentru butonul activ */
+    background-color: #400ba2; /* Culoare de fundal pentru butonul activ */
     color: rgb(75, 233, 17); /* Culoare text pentru butonul activ */
     font-weight: bold;
 }
 .content {
-    margin: 20px;
+    margin: 22px;
 }
 
 /* Ajustare conținut principal */
@@ -69,9 +70,8 @@ main {
     border-radius: 8px;
 }
 .footer {
-    position: fixed !important;
     margin-top: 20px;
-    padding: 10px;
+    padding: 20px;
     background-color: #0b66ac;
     border-top: 1px solid #100404;
     text-align: center;
