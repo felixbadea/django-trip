@@ -8,6 +8,9 @@
     <meta name="description" content="Felix Travel Agency - Book your dream vacation today!">
     <meta name="keywords" content="travel, vacation, trips, Felix Travel Agency">
     <title>{% block title %}Felix Travel Agency{% endblock %}</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     
 {% block extra_css %}{% endblock %}
