@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-bu_cg+*!2v_rk3-eb#p=vt8&am9m7%_gecetm*s=qn(1(aq3^%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -137,4 +137,10 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # am ales server SMTP
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'badeafelix611@gmail.com'
+EMAIL_HOST_PASSWORD = 'zyqq ysyh qxsw honz'  # Folosesc un  app password pentru Gmail
+DEFAULT_FROM_EMAIL = 'badeafelix611@gmail.com'

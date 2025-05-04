@@ -1,5 +1,5 @@
 body {
-    background-image: url('static /css/images/plaja1.jpg');
+    background-image: url('static ../images/plaja1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -81,6 +81,31 @@ main {
     margin: 5px 0;
     color: white;
 }
+.modal-content {
+    border-radius: 10px;
+}
+  
+.modal-header {
+    background-color: #f8f9fa;
+}
+  
+.btn-primary {
+    background-color: #007bff; /* Ajustează culoarea dacă ai un brand specific */
+}
+  
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+  
+.footer a {
+    color: #a8ec18; /* Stilizează link-ul Contact din footer */
+    text-decoration: none;
+}
+  
+.footer a:hover {
+    text-decoration: underline;
+  
+}
 
 /* În trips/static/css/base.css */
 form {
@@ -109,4 +134,18 @@ form button:hover {
 }
 .error {
     color: red;
+}
+
+.alert-success {
+    margin: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 600px; /* Limitează lățimea */
+    text-align: center;
+    animation: fadeIn 0.5s ease-in;
+}
+/* adaugare tranzitie */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }

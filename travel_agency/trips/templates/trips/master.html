@@ -31,14 +31,27 @@
         {% endif %}
     </nav>
     <main>
+        {% if request.GET.success %}
+        <div class="alert alert-success" role="alert">
+            Mesajul tău a fost trimis cu succes!
+        </div>
+        {% endif %}
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
         {% block content %}
         {% endblock %}
     </main>
 <!-- Footer -->
-    <footer class="footer">
-        <p>© 2025 Felix Travel Agency. Toate drepturile rezervate.</p>
-        <p>Contact: contact@travelagency.com</p>
-    </footer>
+<footer class="footer">
+    <p>© 2025 Felix Travel Agency. Toate drepturile rezervate.</p>
+    <p><a href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a></p>
+</footer>
+
+<!-- Include formularul de contact -->
+{% include 'contact.html' %}
 
 <script defer src="{% static 'js/activareclick.js' %}"></script>
 <script defer src="{% static 'js/ceas.js' %}"></script>

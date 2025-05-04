@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from trips.models import Trip, Country, City, Continent, Purchase
+from trips.models import Trip, Country, City, Continent, Purchase, ContactMessage
 from django.utils import timezone
 from django.db.models import Q
 from django.core.paginator import Paginator
@@ -9,6 +9,9 @@ from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages
+from django.conf import settings
+from django.core.mail import send_mail
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -168,3 +171,23 @@ def purchase_trip(request, trip_id):
 
 def about(request):
     return render(request, 'trips/about.html')
+
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        ContactMessage.objects.create(name=name, email=email, message=message)
+        # Trimite email (opțional)
+        try:
+            send_mail(
+                subject=f'Mesaj nou de la {name}',
+                message=f'Mesaj: {message}\nEmail: {email}',
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=['badeafelix611@gmail.com'],
+            )
+            return HttpResponseRedirect('/?success=1')
+        except Exception as e:
+            print(f"Eroare la trimiterea email-ului: {e}")
+            return render(request, 'base.html', {'error': f'Eroare la trimiterea mesajului: {e}'})
+    return render(request, 'base.html') # Fallback pentru acces direct
