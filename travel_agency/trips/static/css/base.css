@@ -25,10 +25,53 @@ body {
     color: rgb(232, 207, 16);
     text-decoration: none;
     margin: 0 15px;
+    justify-content: space-between;
     font-size: 16px;
     border-radius: 3px;
     box-shadow: #007bff;
     text-shadow: 1px 1px 2px black, 0 0 25px hsl(5, 100%, 50%), 0 0 5px darkblue;
+}
+.navbar .dropdown-toggle {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .dropdown-toggle:hover {
+    background-color: #e9ecef; /* Fundal la hover */
+}
+
+.navbar .dropdown-menu {
+    min-width: 250px; /* Lățime minimă pentru dropdown */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Umbră pentru aspect de card */
+    border: 1px solid #e0e0e0; /* Bordură subtilă */
+}
+
+.navbar .dropdown-header {
+    font-weight: bold; /* Titlu mai vizibil */
+    color: #333;
+    padding: 10px 16px;
+}
+
+.navbar .dropdown-item {
+    padding: 8px 16px; /* Spațiere mai bună */
+    white-space: normal; /* Permite textului să se extindă pe mai multe linii */
+}
+
+.navbar .dropdown-item:hover {
+    background-color: #f8f9fa; /* Culoare la hover */
+}
+
+.navbar .dropdown-item-text {
+    padding: 8px 16px;
+    color: #6c757d; /* Culoare gri pentru „No purchases” */
+}
+
+.navbar .bi-person-circle {
+    font-size: 1.2rem; /* Dimensiune pictogramă */
+    vertical-align: middle;
 }
 .navbar a:hover {
     text-decoration: none;
@@ -49,6 +92,13 @@ body {
     background-color: #400ba2; /* Culoare de fundal pentru butonul activ */
     color: rgb(75, 233, 17); /* Culoare text pentru butonul activ */
     font-weight: bold;
+}
+.navbar .dropdown-menu {
+    background-color: #ffffff;
+    border-color: #007bff; /* Bordură albastră */
+}
+.navbar .dropdown-item:hover {
+    background-color: #e7f1ff; /* Fundal albastru deschis la hover */
 }
 .content {
     margin: 22px;

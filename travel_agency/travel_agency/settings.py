@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-bu_cg+*!2v_rk3-eb#p=vt8&am9m7%_gecetm*s=qn(1(aq3^%'
+SECRET_KEY = os.getenv('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -71,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'trips.context_processors.user_purchases',
             ],
         },
     },
@@ -145,5 +150,5 @@ EMAIL_HOST = 'smtp.gmail.com'  # am ales server SMTP
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'badeafelix611@gmail.com'
-EMAIL_HOST_PASSWORD = 'zyqq ysyh qxsw honz'  # Folosesc un  app password pentru Gmail
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD') # Folosesc un  app password pentru Gmail
 DEFAULT_FROM_EMAIL = 'badeafelix611@gmail.com'

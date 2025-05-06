@@ -12,6 +12,7 @@
         <h1>Purchase Successful!</h1>
         <p>Thank you for booking your trip to {{ purchase.trip.destination_city.name }}.</p>
         <div class="details">
+            <p><strong>Destination:</strong> {{ purchase.trip.destination_hotel.city.name }}</p>
             <p><strong>Hotel:</strong> <a href="{% url 'search_trips' %}?hotel={{ purchase.trip.destination_hotel.id }}">{{ purchase.trip.destination_hotel.name }}</a> ({{ purchase.trip.destination_hotel.standard }} stars)</p>
             <p><strong>Country:</strong> <a href="{% url 'search_trips' %}?country={{ purchase.trip.destination_hotel.city.country.id }}">{{ purchase.trip.destination_hotel.city.country.name }}</a></p>
             <p><strong>From:</strong> <a href="{% url 'search_trips' %}?departure_city={{ purchase.trip.departure_city.id }}">{{ purchase.trip.departure_city.name }}</a></p>
