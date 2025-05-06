@@ -21,7 +21,8 @@ class Country(models.Model):
 class City(models.Model):
     name = models.CharField(max_length=100)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
-
+    image = models.ImageField(upload_to='city_images/', null=True, blank=True)
+    
     def __str__(self):
         return f"{self.name}, {self.country}"
     class Meta:
@@ -144,3 +145,12 @@ class ContactMessage(models.Model):
     def __str__(self):
         return f'{self.name} - {self.email}'
     
+class Booking(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
+    booking_date = models.DateTimeField(auto_now_add=True)
+    total_price = models.DecimalField(max_digits=10, decimal_places=2)
+    status = models.CharField(max_length=20, default='confirmed')
+
+    def __str__(self):
+        return f"Booking for {self.trip.destination_hotel.city.name} by {self.user.username}"

@@ -1,4 +1,3 @@
-<!-- trips/home.html -->
 {% extends 'trips/master.html' %}
 {% load static %}
 
@@ -9,47 +8,63 @@
 {% endblock %}
 
 {% block content %}
+<div class="container my-5">
     <h1>Welcome to Felix Travel Agency</h1>
-<aside class="left-side">
-    <div class="trip-section">
-        <h2>Promoted Trips</h2>
-        {% for trip in promoted_trips %}
-        <div class="trip-item">
-            <h3>
-                <a href="{% url 'search_trips' %}?destination_city={{ trip.destination_city.id }}">{{ trip.destination_hotel.city.name }}</a>
-            </h3>
-            <p>
-                Hotel: <a href="{% url 'search_trips' %}?hotel={{ trip.destination_hotel.id }}">{{ trip.destination_hotel.name }}</a> ({{ trip.destination_hotel.standard }} stars)<br>
-                From: <a href="{% url 'search_trips' %}?departure_city={{ trip.departure_city.id }}">{{ trip.departure_city.name }}</a><br>
-                Date: {{ trip.departure_date|date:"d M Y" }}<br>
-                Price: €{{ trip.price_adult }} (adult)
-            </p>
-            <a href="{% url 'trip_detail' trip.id %}">View Details</a>
+    <aside class="left-side">
+        <div class="trip-section">
+            <h2>Promoted Trips</h2>
+            {% for trip in promoted_trips %}
+            <div class="trip-item d-flex align-items-center mb-3 p-3 border rounded">
+                <div class="trip-info flex-grow-1">
+                    <h3>
+                        <a href="{% url 'search_trips' %}?destination_city={{ trip.destination_city.id }}">{{ trip.destination_hotel.city.name }}</a>
+                    </h3>
+                    <p>
+                        Hotel: <a href="{% url 'search_trips' %}?hotel={{ trip.destination_hotel.id }}">{{ trip.destination_hotel.name }}</a> ({{ trip.destination_hotel.standard }} stars)<br>
+                        From: <a href="{% url 'search_trips' %}?departure_city={{ trip.departure_city.id }}">{{ trip.departure_city.name }}</a><br>
+                        Date: {{ trip.departure_date|date:"d M Y" }}<br>
+                        Price: €{{ trip.price_adult }} (adult)
+                    </p>
+                    <a href="{% url 'trip_detail' trip.id %}" class="btn btn-primary btn-sm">View Details</a>
+                </div>
+                {% if trip.destination_hotel.city.image %}
+                <img src="{{ trip.destination_hotel.city.image.url }}" class="img-fluid rounded ms-3" style="max-width: 150px; height: auto;" alt="{{ trip.destination_hotel.city.name }}">
+                {% else %}
+                <img src="{% static 'images/default_city.jpg' %}" class="img-fluid rounded ms-3" style="max-width: 150px; height: auto;" alt="Default">
+                {% endif %}
+            </div>
+            {% empty %}
+            <p>No promoted trips available.</p>
+            {% endfor %}
         </div>
-        {% empty %}
-        <p>No promoted trips available.</p>
-        {% endfor %}
-    </div>
 
-    <div class="trip-section">
-        <h2>Upcoming Trips</h2>
-        {% for trip in upcoming_trips %}
-        <div class="trip-item">
-            <h3>{{ trip.destination_hotel.city.name }}</h3>
-            <p>Date: {{ trip.departure_date|date:"d M Y" }}</p>
-            <a href="{% url 'search_trips' %}?destination_city={{ trip.destination_city.id }}">See more</a>
+        <div class="trip-section">
+            <h2>Upcoming Trips</h2>
+            {% for trip in upcoming_trips %}
+            <div class="trip-item d-flex align-items-center mb-3 p-3 border rounded">
+                <div class="trip-info flex-grow-1">
+                    <h3>{{ trip.destination_hotel.city.name }}</h3>
+                    <p>Date: {{ trip.departure_date|date:"d M Y" }}</p>
+                    <a href="{% url 'search_trips' %}?destination_city={{ trip.destination_city.id }}" class="btn btn-primary btn-sm">See more</a>
+                </div>
+                {% if trip.destination_hotel.city.image %}
+                <img src="{{ trip.destination_hotel.city.image.url }}" class="img-fluid rounded ms-3" style="max-width: 150px; height: auto;" alt="{{ trip.destination_hotel.city.name }}">
+                {% else %}
+                <img src="{% static 'images/default_city.jpg' %}" class="img-fluid rounded ms-3" style="max-width: 150px; height: auto;" alt="Default">
+                {% endif %}
+            </div>
+            {% empty %}
+            <p>No upcoming trips available.</p>
+            {% endfor %}
         </div>
-        {% empty %}
-        <p>No upcoming trips available.</p>
-        {% endfor %}
-    </div>
-</aside>
+    </aside>
     <div class="country-section">
         <h2>Explore by Country</h2>
         {% for country in popular_countries %}
-        <a href="{% url 'search_trips' %}?country={{ country.id }}" class="country-link" aria-label="Search trips to {{ country.name }}">{{ country.name }}</a>
+        <a href="{% url 'search_trips' %}?country={{ country.id }}" class="country-link btn btn-outline-secondary m-1" aria-label="Search trips to {{ country.name }}">{{ country.name }}</a>
         {% empty %}
         <p>No countries available.</p>
         {% endfor %}
     </div>
+</div>
 {% endblock %}

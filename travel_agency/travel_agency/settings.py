@@ -89,7 +89,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -131,6 +130,10 @@ STATICFILES_DIRS = [
 ]
 # Pentru producție (unde se adună fișierele cu collectstatic)
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Pentru lucrul cu fisiere media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

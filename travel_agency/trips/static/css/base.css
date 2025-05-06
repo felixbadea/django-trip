@@ -1,5 +1,5 @@
 body {
-    background-image: url('/static/images/plaja1.jpg');
+    background-image: url('/static/images/plaja2.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -97,16 +97,23 @@ main {
     background-color: #0056b3;
 }
   
-.footer a {
+footer.footer a {
     color: #a8ec18; /* Stilizează link-ul Contact din footer */
     text-decoration: none;
+    transition: transform 0.2s ease; /* Tranziție lină pentru efect */
 }
   
-.footer a:hover {
+footer.footer a:hover {
     text-decoration: none;
-   
+    transform: scale(1.5); /* Mărește linkul cu 50% */
+    color: #0cf233;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
-
+.footer .contact-icon {
+    width: 20px; /* Dimensiune mică pentru pictogramă */
+    height: 20px;
+    margin-right: 5px; /* Spațiu între imagine și text */
+}
 /* În trips/static/css/base.css */
 form {
     margin-top: 15px;
