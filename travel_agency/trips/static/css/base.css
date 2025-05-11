@@ -1,0 +1,213 @@
+body {
+    background-image: url('/static/images/plaja2.jpg');
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    
+}
+/* Navbar fix */
+.navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background-color: #0ef8dd;
+    color: rgb(7, 2, 13);
+    padding: 15px 20px;
+    z-index: 10000; /* Mai mare */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Stiluri link-uri navbar */
+.navbar a {
+    color: rgb(232, 207, 16);
+    text-decoration: none;
+    margin: 0 15px;
+    justify-content: space-between;
+    font-size: 16px;
+    border-radius: 3px;
+    box-shadow: #007bff;
+    text-shadow: 1px 1px 2px black, 0 0 25px hsl(5, 100%, 50%), 0 0 5px darkblue;
+}
+.navbar .dropdown-toggle {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .dropdown-toggle:hover {
+    background-color: #e9ecef; /* Fundal la hover */
+}
+
+.navbar .dropdown-menu {
+    min-width: 250px; /* Lățime minimă pentru dropdown */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Umbră pentru aspect de card */
+    border: 1px solid #e0e0e0; /* Bordură subtilă */
+}
+
+.navbar .dropdown-header {
+    font-weight: bold; /* Titlu mai vizibil */
+    color: #333;
+    padding: 10px 16px;
+}
+
+.navbar .dropdown-item {
+    padding: 8px 16px; /* Spațiere mai bună */
+    white-space: normal; /* Permite textului să se extindă pe mai multe linii */
+}
+
+.navbar .dropdown-item:hover {
+    background-color: #f8f9fa; /* Culoare la hover */
+}
+
+.navbar .dropdown-item-text {
+    padding: 8px 16px;
+    color: #6c757d; /* Culoare gri pentru „No purchases” */
+}
+
+.navbar .bi-person-circle {
+    font-size: 1.2rem; /* Dimensiune pictogramă */
+    vertical-align: middle;
+}
+.navbar a:hover {
+    text-decoration: none;
+}
+.nav-link {
+    margin-right: 15px;
+    color: blue;
+    text-decoration: none;
+}
+.nav-link:hover {
+    text-decoration: none;
+}
+.nav-user {
+    margin-right: 15px;
+    color: #333;
+}
+.navbar a.active {
+    background-color: #400ba2; /* Culoare de fundal pentru butonul activ */
+    color: rgb(75, 233, 17); /* Culoare text pentru butonul activ */
+    font-weight: bold;
+}
+.navbar .dropdown-menu {
+    background-color: #ffffff;
+    border-color: #007bff; /* Bordură albastră */
+}
+.navbar .dropdown-item:hover {
+    background-color: #e7f1ff; /* Fundal albastru deschis la hover */
+}
+.content {
+    margin: 22px;
+}
+
+/* Ajustare conținut principal */
+main {
+    margin-top: 70px; /* Înălțimea navbar-ului + spațiu extra */
+    padding: 20px;
+}
+
+#clock {
+    padding: 10px 15px;
+    color: #333;
+    font-family: monospace; /* Pentru un aspect de ceas digital */
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #e7ee18;
+    border-radius: 8px;
+}
+.footer {
+    flex-shrink: 0;
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #0b66ac;
+    border-top: 1px solid #100404;
+    text-align: center;
+    margin-bottom: 0;
+}
+.footer p {
+    margin: 5px 0;
+    color: white;
+}
+.modal-content {
+    border-radius: 10px;
+}
+  
+.modal-header {
+    background-color: #f8f9fa;
+}
+  
+.btn-primary {
+    background-color: #007bff; /* Ajustează culoarea dacă ai un brand specific */
+}
+  
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+  
+footer.footer a {
+    color: #a8ec18; /* Stilizează link-ul Contact din footer */
+    text-decoration: none;
+    transition: transform 0.2s ease; /* Tranziție lină pentru efect */
+}
+  
+footer.footer a:hover {
+    text-decoration: none;
+    transform: scale(1.5); /* Mărește linkul cu 50% */
+    color: #0cf233;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.footer .contact-icon {
+    width: 20px; /* Dimensiune mică pentru pictogramă */
+    height: 20px;
+    margin-right: 5px; /* Spațiu între imagine și text */
+}
+/* În trips/static/css/base.css */
+form {
+    margin-top: 15px;
+}
+form p {
+    margin-bottom: 10px;
+}
+form input {
+    padding: 5px;
+    width: 200px;
+    border: 1px solid #ccc;
+}
+form button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+form button:hover {
+    background-color: #0056b3;
+}
+.success {
+    color: green;
+}
+.error {
+    color: red;
+}
+
+.alert-success {
+    margin: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 600px; /* Limitează lățimea */
+    text-align: center;
+    animation: fadeIn 0.5s ease-in;
+}
+/* adaugare tranzitie */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

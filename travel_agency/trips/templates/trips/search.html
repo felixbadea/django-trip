@@ -1,0 +1,56 @@
+<!-- trips/search.html -->
+{% extends 'trips/master.html' %}
+{% load static %}
+
+{% block title %}Search Trips{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>Search Trips</h1>
+    <form method="get">
+        <label>Destination or Hotel: <input type="text" name="q" value="{{ query|default_if_none:'' }}"></label>
+        <label>Country:
+            <select name="country">
+                <option value="">Any</option>
+                {% for country in countries %}
+                    <option value="{{ country.id }}" {% if country.id|stringformat:"s" == request.GET.country %}selected{% endif %}>{{ country.name }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>Continent:
+            <select name="continent">
+                <option value="">Any</option>
+                {% for continent in continents %}
+                    <option value="{{ continent }}" {% if continent == request.GET.continent %}selected{% endif %}>{{ continent }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>Start Date: <input type="date" name="date_start" value="{{ request.GET.date_start }}"></label>
+        <label>End Date: <input type="date" name="date_end" value="{{ request.GET.date_end }}"></label>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if trips %}
+        <h2>Results ({{ trips.count }})</h2>
+        {% for trip in trips %}
+            <div class="trip">
+                <h3><a href="{% url 'trip_detail' trip.id %}">{{ trip.destination_city.name }}</a></h3>
+                <p>
+                    <strong>Hotel:</strong> {{ trip.destination_hotel.name }} ({{ trip.destination_hotel.standard }} stars)<br>
+                    <strong>Country:</strong> {{ trip.destination_hotel.city.country.name }}<br>
+                    <strong>From:</strong> {{ trip.departure_city.name }}<br>
+                    <strong>Departure:</strong> {{ trip.departure_date|date:"Y-m-d" }}<br>
+                    <strong>Price:</strong> €{{ trip.price_adult }} / adult, €{{ trip.price_child }} / child<br>
+                    <strong>Available:</strong> {{ trip.places_adults }} adults, {{ trip.places_children }} children
+                    {% if trip.places_adults <= 2 or trip.places_children <= 2 %}
+                        <span class="limited-places"> - Hurry! Limited places!</span>
+                    {% endif %}
+                </p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No trips found.</p>
+    {% endif %}
+ {% endblock %}

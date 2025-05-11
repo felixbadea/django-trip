@@ -1,0 +1,6 @@
+h1 {
+    color: rgb(14, 99, 234);
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px rgb(16, 214, 201);
+    text-transform: capitalize;
+    font-family: fantasy;
+}

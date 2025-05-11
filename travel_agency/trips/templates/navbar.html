@@ -1,0 +1,32 @@
+<nav class="navbar">
+    <a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a>
+    <a href="{% url 'search_trips' %}" class="{% if request.path == '/search/' %}active{% endif %}">Search</a>
+    <a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">About</a>
+    <span id="clock" aria-live="off"></span>
+    {% if user.is_authenticated %}
+    <div class="dropdown">
+        <a href="#" class="dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle me-1"></i>Welcome, {{ user.username }}!
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li class="dropdown-header">Purchase History</li>
+            {% for purchase in user_purchases %}
+            <li>
+                <a class="dropdown-item" href="{% url 'purchase_success' purchase.id %}">
+                    <i class="bi bi-geo-alt me-1"></i> {{ purchase.trip.destination_hotel.city.name }} - {{ purchase.trip.departure_date|date:"d M Y" }} (€{{ purchase.total_amount|floatformat:2 }})
+                </a>
+            </li>
+            {% empty %}
+            <li><span class="dropdown-item-text">No purchases yet</span></li>
+            {% endfor %}
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'manage_account' %}">Manage Account</a></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </div>
+    {% else %}
+    <a href="{% url 'login' %}" class="{% if request.path == '/login/' %}active{% endif %}">Login</a>
+    <a href="{% url 'register' %}" class="{% if request.path == '/register/' %}active{% endif %}">Register</a>
+    {% endif %}
+</nav>
+

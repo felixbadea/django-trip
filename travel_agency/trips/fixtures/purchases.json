@@ -1,0 +1,23 @@
+[
+    {"model": "trips.purchase", "pk": 1, "fields": {
+        "trip": 1,
+        "adults": 2,
+        "children": 1,
+        "total_amount": "3000.00",
+        "purchase_date": "2025-04-10T10:00:00Z"
+    }},
+    {"model": "trips.purchase", "pk": 2, "fields": {
+        "trip": 2,
+        "adults": 3,
+        "children": 2,
+        "total_amount": "6000.00",
+        "purchase_date": "2025-04-11T15:00:00Z"
+    }},
+    {"model": "trips.purchase", "pk": 3, "fields": {
+        "trip": 3,
+        "adults": 1,
+        "children": 1,
+        "total_amount": "1500.00",
+        "purchase_date": "2025-04-12T09:00:00Z"
+    }}
+]

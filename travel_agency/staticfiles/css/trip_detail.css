@@ -1,0 +1,26 @@
+.limited-places {
+    color: red;
+}
+
+.book-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+.book-button.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    color: #666;
+}
+.unavailable {
+    color: red;
+    font-weight: bold;
+}
+.limited-places {
+    color: orange;
+    font-weight: bold;
+}
+

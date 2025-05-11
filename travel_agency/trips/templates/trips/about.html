@@ -1,0 +1,22 @@
+{% extends 'trips/master.html' %}
+{% load static %}
+
+{% block title %}About Us{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1><i>About Felix Travel Agency</i></h1>
+    <p>Welcome to our travel agency, where we make your dream vacations come true!</p>
+    <p>
+        Founded in 2025, we specialize in offering personalized travel experiences to destinations worldwide. 
+        Whether you're looking for a relaxing beach getaway, an adventurous city tour, or a cultural exploration, 
+        we have the perfect trip for you.
+    </p>
+    <p>
+        Our team is dedicated to ensuring every detail of your journey is seamless, from booking flights 
+        to selecting the best hotels. Contact us at <a href="mailto:info@travelagency.com">info@travelagency.com</a> 
+        to start planning your next adventure!
+    </p>
+{% endblock %}

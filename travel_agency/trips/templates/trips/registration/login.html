@@ -1,0 +1,22 @@
+{% extends 'trips/master.html' %}
+{% block title %}Login{% endblock %}
+
+
+
+{% block content %}
+    <h1 ><i>Login here:</i></h1>
+    {% if messages %}
+        {% for message in messages %}
+            <p class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}"> 
+        {% endif %}
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+{% endblock %}

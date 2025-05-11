@@ -1,0 +1,30 @@
+{% extends 'trips/master.html' %}
+{% load static %}
+
+{% block title %}Purchase Successful{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/purchase_success.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="success-section">
+        <h1>Purchase Successful!</h1>
+        <p>Thank you for booking your trip to {{ purchase.trip.destination_city.name }}.</p>
+        <div class="details">
+            <p><strong>Destination:</strong> {{ purchase.trip.destination_hotel.city.name }}</p>
+            <p><strong>Hotel:</strong> <a href="{% url 'search_trips' %}?hotel={{ purchase.trip.destination_hotel.id }}">{{ purchase.trip.destination_hotel.name }}</a> ({{ purchase.trip.destination_hotel.standard }} stars)</p>
+            <p><strong>Country:</strong> <a href="{% url 'search_trips' %}?country={{ purchase.trip.destination_hotel.city.country.id }}">{{ purchase.trip.destination_hotel.city.country.name }}</a></p>
+            <p><strong>From:</strong> <a href="{% url 'search_trips' %}?departure_city={{ purchase.trip.departure_city.id }}">{{ purchase.trip.departure_city.name }}</a></p>
+            <p><strong>Departure:</strong> {{ purchase.trip.departure_date|date:"Y-m-d" }}</p>
+            <p><strong>Adults:</strong> {{ purchase.adults }}</p>
+            <p><strong>Children:</strong> {{ purchase.children }}</p>
+            <p><strong>Total:</strong> €{{ purchase.total_amount }}</p>
+            <p><strong>Purchase Date:</strong> {{ purchase.purchase_date|date:"Y-m-d H:i" }}</p>
+        </div>
+        <div class="links">
+            <a href="{% url 'trip_detail' purchase.trip.id %}">View Trip Details</a>
+            <a href="{% url 'home' %}">Back to Home</a>
+        </div>
+    </div>
+{% endblock %}

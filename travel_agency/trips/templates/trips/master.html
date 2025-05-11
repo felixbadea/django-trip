@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Felix Travel Agency - Book your dream vacation today!">
+    <meta name="keywords" content="travel, vacation, trips, Felix Travel Agency">
+    <title>{% block title %}Felix Travel Agency{% endblock %}</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+      <main>
+        {% if request.GET.success %}
+        <div class="alert alert-success" role="alert">
+            Mesajul tău a fost trimis cu succes!
+        </div>
+        {% endif %}
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </main>
+<!-- Footer -->
+<footer class="footer py-4 mt-5">
+    <div class="container">
+        <div class="row">
+            <!-- Despre noi -->
+            <div class="col-md-4">
+                <h5>Felix Travel Agency</h5>
+                <p>
+                    Planifică-ți următoarea aventură cu noi! <br>
+                    Oferim experiențe de călătorie de neuitat în destinații din întreaga lume.
+                </p>
+            </div>
+            <!-- Link-uri rapide -->
+            <div class="col-md-4">
+                <h5>Link-uri Rapide</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'home' %}" class="text-decoration-none">Home</a></li>
+                    <li><a href="{% url 'search_trips' %}" class="text-decoration-none">Search trips</a></li>
+                    <li>
+                        <p>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#contactModal">
+                                <img src="{% static 'images/contact_icon.png' %}" alt="Contact Form" class="contact-icon"> Formular de Contact
+                            </a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <!-- Contact -->
+            <div class="col-md-4">
+                <h5>Contact</h5>
+                <p>
+                    Email: <a href="mailto:info@felixtravel.com" class="text-decoration-none">info@felixtravel.com</a><br>
+                    Telefon: +40 123 456 789<br>
+                    Adresă: Bd. Balcescu Nicolae 2 , Pitesti , Arges
+                </p>
+                
+            </div>
+        </div>
+        <hr>
+        <div class="text-center">
+            <p>© {% now "Y" %} Felix Travel Agency. Toate drepturile rezervate.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Include formularul de contact -->
+{% include 'contact.html' %}
+
+<script defer src="{% static 'js/activareclick.js' %}"></script>
+<script defer src="{% static 'js/ceas.js' %}"></script>
+</body>
+</html>
+
+ 
