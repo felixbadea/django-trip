@@ -1,1 +1,44 @@
-
+{% load static %}
+<footer class="footer py-4 mt-5">
+    <div class="container">
+        <div class="row">
+            <!-- Despre noi -->
+            <div class="col-md-4">
+                <h5>Felix Travel Agency</h5>
+                <p>
+                    Planifică-ți următoarea aventură cu noi! <br>
+                    Oferim experiențe de călătorie de neuitat în destinații din întreaga lume.
+                </p>
+            </div>
+            <!-- Link-uri rapide -->
+            <div class="col-md-4">
+                <h5>Link-uri Rapide</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'home' %}" class="text-decoration-none">Home</a></li>
+                    <li><a href="{% url 'search_trips' %}" class="text-decoration-none">Search trips</a></li>
+                    <li>
+                        <p>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#contactModal">
+                                <img src="{% static 'images/contact_icon.png' %}" alt="Contact Form" class="contact-icon"> Formular de Contact
+                            </a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <!-- Contact -->
+            <div class="col-md-4">
+                <h5>Contact</h5>
+                <p>
+                    Email: <a href="mailto:info@felixtravel.com" class="text-decoration-none">info@felixtravel.com</a><br>
+                    Telefon: +40 123 456 789<br>
+                    <a href="https://www.google.com/maps?q=Bd.+B%C4%83lcescu+Nicolae+2,+Pite%C8%99ti,+Arge%C8%99,+Romania" target="_blank" class="text-decoration-none">Adresă</a>: Bd. Bălcescu Nicolae 2, Pitești, Argeș
+                </p>
+                
+            </div>
+        </div>
+        <hr>
+        <div class="text-center">
+            <p>© {% now "Y" %} Felix Travel Agency. Toate drepturile rezervate.</p>
+        </div>
+    </div>
+</footer>

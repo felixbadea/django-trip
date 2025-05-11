@@ -165,9 +165,11 @@ footer.footer a:hover {
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 .footer .contact-icon {
-    width: 20px; /* Dimensiune mică pentru pictogramă */
-    height: 20px;
+    width: 24px; /* Dimensiune mică pentru pictogramă */
+    height: 24px;
     margin-right: 5px; /* Spațiu între imagine și text */
+}
+
 }
 /* În trips/static/css/base.css */
 form {
