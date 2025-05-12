@@ -2,6 +2,7 @@
     <a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a>
     <a href="{% url 'search_trips' %}" class="{% if request.path == '/search/' %}active{% endif %}">Search</a>
     <a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">About</a>
+    <a href="https://www.discovercars.com/" class="{% if request.path == '/car rentals/' %}active{% endif %}">Car rentals</a>
     <span id="clock" aria-live="off"></span>
     {% if user.is_authenticated %}
     <div class="dropdown">
