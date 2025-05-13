@@ -1,4 +1,3 @@
-Acesta este proiectul travel_agency contruit in django.
-Acest proiect este construit cu ajutotul SDA;
-Am creat branch-ul "prima-ramura"
-am creat un branch update-readme pe git local pe care l am sters din github.
+Acesta este proiectul travel_agency construit in django.
+Acest proiect este construit cu ajutorul SDA.
+Momentan este in faza de dezvoltare.
