@@ -106,7 +106,6 @@ def trip_detail(request, trip_id):
     return render(request, 'trips/trip_detail.html', {'trip': trip, 'similar_trips': similar_trips})
 
 
-
 def purchase_success(request, purchase_id):
     purchase = get_object_or_404(Purchase, id=purchase_id)
     return render(request, 'trips/purchase_success.html', {'purchase': purchase})

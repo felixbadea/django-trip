@@ -67,6 +67,9 @@ class Trip(models.Model):
     places_adults = models.IntegerField()
     places_children = models.IntegerField()
 
+    class Meta:
+        ordering = ['id']
+
     def __str__(self):
         return f"{self.departure_city} to {self.destination_hotel} ({self.departure_date})"
     
