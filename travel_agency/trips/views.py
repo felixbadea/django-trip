@@ -29,10 +29,10 @@ def home(request):
     )[:3]
     popular_countries = Country.objects.filter(
         city__destination_trips__isnull=False
-    ).distinct()[:3]
+    ).distinct().order_by('name')[:5]
     popular_continents = Continent.objects.filter(
         country__city__destination_trips__isnull=False
-    ).distinct()[:3]
+    ).distinct().order_by('name')[:5]
 
     context = {
         'promoted_trips': promoted_trips,

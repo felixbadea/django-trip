@@ -64,14 +64,22 @@
         </div>
     </aside>
     <div class="country-section">
-        <h2>Explore by Country</h2>
+        <h2>Explore by Country:</h2>
         {% for country in popular_countries %}
         <a href="{% url 'search_trips' %}?country={{ country.id }}" class="country-link btn btn-outline-secondary m-1" aria-label="Search trips to {{ country.name }}">{{ country.name }}</a>
         {% empty %}
         <p>No countries available.</p>
         {% endfor %}
     </div>
-
+    <div class="continent-section">
+        <h2>Explore by Continent:</h2>
+        {% for continent in popular_continents %}
+        <a href="{% url 'search_trips' %}?continent={{ continent.id }}" class="continent-link btn btn-outline-secondary m-1" aria-label="Search trips to {{ continent.name }}">{{ continent.name }}</a>
+        {% empty %}
+        <p>No continents available.</p>
+        {% endfor %}
+    </div>
+    
     <!-- Modal pentru videoclip -->
     <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">

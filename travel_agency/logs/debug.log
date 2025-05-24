@@ -1,0 +1,12 @@
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\liqui\PycharmProjects\django-trip\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\liqui\PycharmProjects\django-trip\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\liqui\PycharmProjects\django-trip\travel_agency\trips\views.py", line 32, in home
+    ).distinct()[:5].order_by('name')
+  File "C:\Users\liqui\PycharmProjects\django-trip\venv\lib\site-packages\django\db\models\query.py", line 1656, in order_by
+    raise TypeError("Cannot reorder a query once a slice has been taken.")
+TypeError: Cannot reorder a query once a slice has been taken.
+"GET / HTTP/1.1" 500 80663
