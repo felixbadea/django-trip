@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Felix Travel Agency - Book your dream vacation today!">
@@ -15,11 +15,12 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     
     {% block extra_css %}{% endblock %}
-</head>
+    </head>
 
-<body>
+    <body>
+    <!-- Navbar -->
     {% include 'navbar.html' %}
-      <main>
+        <main>
         {% if request.GET.success %}
         <div class="alert alert-success" role="alert">
             Mesajul tău a fost trimis cu succes!
@@ -32,16 +33,16 @@
         {% endif %}
         {% block content %}
         {% endblock %}
-    </main>
-<!-- Footer -->
-{% include 'footer.html' %}
+        </main>
+    <!-- Footer -->
+    {% include 'footer.html' %}
 
-<!-- Include formularul de contact -->
-{% include 'contact.html' %}
+    <!-- Include formularul de contact -->
+    {% include 'contact.html' %}
 
-<script defer src="{% static 'js/activareclick.js' %}"></script>
-<script defer src="{% static 'js/ceas.js' %}"></script>
-</body>
+    <script defer src="{% static 'js/activareclick.js' %}"></script>
+    <script defer src="{% static 'js/ceas.js' %}"></script>
+    </body>
 </html>
 
  
